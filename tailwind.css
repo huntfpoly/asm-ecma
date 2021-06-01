@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+footer li {
+  margin-top: 1rem;
+}
+.bg-gradient-white {
+  background-image: linear-gradient(to right, transparent, white);
+}
+.overlay {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(16,16,16, 0.5);
+}
+.overlay.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+
+}

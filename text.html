@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Assignment</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"/>
+    <link rel="stylesheet" href="public/styles/styles.css"/>
+    <link rel="stylesheet" href="public/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="public/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"/>
+
+</head>
+<body>
+
+<div class="owl-carousel owl-theme">
+    <div> Your Content</div>
+    <div> Your Content</div>
+    <div> Your Content</div>
+    <div> Your Content</div>
+    <div> Your Content</div>
+    <div> Your Content</div>
+    <div> Your Content</div>
+</div>
+<script src="main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(document).ready(function () {
+        const owl =   $('.owl-carousel').owlCarousel();
+        window.addEventListener('load', owl);
+
+    });
+</script>
+</body>
+</html>
