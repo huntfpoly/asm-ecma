@@ -9,12 +9,17 @@ const ProductApi = {
         const url = `/products/${id}`;
         return axiosClient.get(url);
     },
+    getPage( countPage = 1,limit = 10,) {
+        const url = `/products?_page=${countPage}&_limit=${limit}`;
+        return axiosClient.get(url);
+    },
+    getCatePage(id) {
+        const url = `/categories/${id}/products`;
+        return axiosClient.get(url);
+    },
     add(product){
         const url = `/products`;
-        return axiosClient.post(url, {...product,
-            created_at: Date.now(),
-            updated_at: Date.now(),
-        })
+        return axiosClient.post(url, product)
     },
     edit(id, product){
         const url = `/products/${id}`;
@@ -23,6 +28,10 @@ const ProductApi = {
     remove(id){
         const url = `/products/${id}`;
         return axiosClient.delete(url)
+    },
+    search(name){
+        const url = `/products?name_like=${name}`;
+        return axiosClient.get(url)
     }
 };
 export default ProductApi;

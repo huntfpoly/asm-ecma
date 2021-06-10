@@ -22,5 +22,11 @@ footer li {
   justify-content: center;
   align-items: center;
   color: #FFFFFF;
+}
+.form-group.invalid .form-control {
+  border-color: #f33a58;
+}
 
+.form-group.invalid .form-message {
+  color: #f33a58;
 }

@@ -7,9 +7,11 @@ const randomCategoryList = (n) => {
     if (n <= 0) return [];
     const categories = [];
     Array.from(new Array(n)).forEach(() => {
+        const name = faker.commerce.department();
         const category = {
             id: faker.datatype.uuid(),
-            name: faker.commerce.department(),
+            name,
+            slug: faker.helpers.slugify(name),
             image: faker.image.image(),
             created_at: Date.now(),
             created_update: Date.now(),
@@ -24,12 +26,14 @@ const randomProductList = (categorylist, numberProduct) => {
 
     for (const category of categorylist) {
         Array.from(new Array(numberProduct)).forEach(() => {
+            const name = faker.commerce.productName();
             const product = {
                 categoryId: category.id,
                 id: faker.datatype.uuid(),
-                name: faker.commerce.productName(),
+                name,
+                slug: faker.helpers.slugify(name),
                 price: faker.commerce.price(),
-                description: faker.commerce.productDescription(),
+                description: faker.lorem.words(50),
                 image: faker.image.image(),
                 created_at: Date.now(),
                 created_update: Date.now(),
@@ -42,11 +46,18 @@ const randomProductList = (categorylist, numberProduct) => {
 }
 (() => {
     const categories = randomCategoryList(4)
-    const products = randomProductList(categories, 5)
+    const products = randomProductList(categories, 4)
 
     const db = {
         categories: categories,
-        products: products
+        products: products,
+        users: [
+            {
+                "email": "admin@gmail.com",
+                "password": "admin",
+                "id": 1
+            }
+        ]
     }
 
     fs.writeFile('./src/model/db.json', JSON.stringify(db), () => {

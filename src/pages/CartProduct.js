@@ -3,9 +3,10 @@ import "alpinejs";
 import {hideLoading, parseRequestUrl, rerender, showLoading} from "../utils";
 import ProductApi from "../api/ProductApi";
 import {getCartItems, setCartItems} from "../localStorage";
+import Header from "../components/Header";
 
 
-const addToCart = (item, forceUpdate = false) => {
+export const addToCart = (item, forceUpdate = false) => {
     let cartItems = getCartItems();
     // Kiểm tra tồn tại của product trong cartItem
     const existItem = cartItems.find((x) => x.product === item.product);
@@ -30,10 +31,9 @@ const addToCart = (item, forceUpdate = false) => {
         rerender(CartProduct);
     }
 }
-const removeFromCart = (id) => {
+export const removeFromCart = (id) => {
     setCartItems(getCartItems().filter((x) => x.product !== id));
-
-    if (id === parseInt(parseRequestUrl().id)) {
+    if (id === parseRequestUrl().id) {
         document.location.hash = '/cart';
     } else {
         rerender(CartProduct);
@@ -48,14 +48,15 @@ const CartProduct = {
         let btnMinus = document.querySelectorAll('button[minus]');
         let btnRemove = document.querySelectorAll('button[delete]');
         btnPlus.forEach(btn => {
-            const id = parseInt(btn.dataset.id);
+            const id = btn.dataset.id;
+
             btn.addEventListener('click', () => {
                 const item = getCartItems().find(x => x.product === id);
                 addToCart({...item, qty: (item.qty + 1)}, true);
             })
         })
         btnMinus.forEach(btn => {
-            const id = parseInt(btn.dataset.id);
+            const id = btn.dataset.id;
             btn.addEventListener('click', () => {
                 const item = getCartItems().find(x => x.product === id);
                 // nếu qty > 1 thì mới cho giảm
@@ -65,9 +66,8 @@ const CartProduct = {
             })
         })
         btnRemove.forEach(btn => {
+            const id = btn.dataset.id;
             btn.addEventListener('click', () => {
-
-                const id = parseInt(btn.dataset.id);
                 removeFromCart(id)
             })
         })
@@ -125,7 +125,7 @@ const CartProduct = {
                                                     <a href="/#/products/${item.product}">
                                                         <p>${item.name}</p>
                                                     </a>
-                                                    <button class="text-gray-700 p-2 hover:text-red-500 focus:outline-none delete-btn" delete data-id="${item.product}">
+                                                    <button class="text-gray-700 p-2 hover:text-red-500 focus:outline-none" delete data-id="${item.product}">
                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                                           <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                                                         </svg>
@@ -139,7 +139,7 @@ const CartProduct = {
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
                                                         </svg>
-                                                    </button>
+                                                        </button>
                                                     <span class="mx-3 text-sm lg:text-base font-medium">
                                                         ${item.qty}
                                                     </span> 
@@ -201,7 +201,7 @@ const CartProduct = {
                                        ${cartItems.reduce((accumulator, currentValue) => accumulator + currentValue.qty * currentValue.price, 0)}
                                     </div>
                                 </div>
-                                <a href="#">
+                                <a href="/#/checkout">
                                     <button class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
                                         <svg aria-hidden="true" data-prefix="far" data-icon="credit-card" class="w-8"
                                              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">

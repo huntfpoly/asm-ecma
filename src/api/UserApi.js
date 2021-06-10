@@ -1,27 +1,23 @@
 import { axiosClient } from "./axiosClient";
 
 const UserApi = {
-    async signin ({ email, password }){
-        try {
-            const response = await axios({
-                url: `${apiUrl}/api/users/signin`,
-                method: 'POST',
-                header: {
-                    'Content-Type': 'application/json',
-                },
-                data: {
-                    email,
-                    password,
-                },
-            });
-            if (response.statusText !== 'OK') {
-                throw new Error(response.data.message);
-            }
-            return response.data;
-        } catch (err) {
-            console.log(err);
-            return { error: err.response.data.message || err.message };
-        }
+    register(data) {
+        const url = `/register`;
+        return axiosClient.post(url, data);
+    },
+    login(data) {
+        const url = `/login`;
+        return axiosClient.post(url, data);
+    },
+    getUser(id,token) {
+        const url = `/660/users/${id}`;
+        axiosClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        return axiosClient.get(url);
+    },
+    update(data) {
+        const url = `/660/users/${data._id}`;
+        axiosClient.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+        return axiosClient.put(url, data);
     }
 };
 export default UserApi;

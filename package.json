@@ -8,7 +8,7 @@
     "build": "NODE_ENV=production postcss tailwind.css -o public/styles/styles.css",
     "dev": "TAILWIND_MODE=watch NODE_ENV=development postcss tailwind.css -o public/styles/styles.css --verbose -w",
     "watch:css": "postcss tailwind.css -o public/styles/styles.css --watch",
-    "json-server": "json-server --watch ./src/model/db.json",
+    "server": "node ./server.js --watch -m ./node_modules/json-server-auth",
     "build-webpack": "webpack --config webpack.config.js",
     "generate-data": "node ./src/model/generate-data.js"
   },
@@ -17,20 +17,23 @@
   "dependencies": {
     "alpinejs": "^2.8.2",
     "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
     "firebase": "^8.6.2",
     "jquery": "^3.6.0",
+    "jsonwebtoken": "^8.5.1",
     "owl.carousel": "^2.3.4",
     "postcss-cli": "^8.3.1",
-    "postcss-import": "^14.0.2"
-
+    "postcss-import": "^14.0.2",
+    "query-string": "^7.0.0"
   },
   "devDependencies": {
     "@tailwindcss/jit": "^0.1.18",
     "autoprefixer": "^10.2.5",
     "faker": "^5.5.3",
+    "json-server": "^0.16.3",
+    "json-server-auth": "^2.0.2",
     "postcss": "^8.2.15",
     "tailwindcss": "^2.1.2",
-    "json-server": "^0.16.3",
     "webpack": "^5.37.0",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"

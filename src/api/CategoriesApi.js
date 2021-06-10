@@ -5,6 +5,10 @@ const CategoriesApi = {
         const url = `/categories`;
         return axiosClient.get(url);
     },
+    getAllSort(field, typeSort) {
+        const url = `/categories?_sort=${field}&_order=${typeSort}`;
+        return axiosClient.get(url);
+    },
     get(id) {
         const url = `/categories/${id}`;
         return axiosClient.get(url);

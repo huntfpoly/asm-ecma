@@ -74,6 +74,7 @@ function Validator(formSelector) {
                 // Lắng nghe sự kiện để validate(blur, change...)
                 input.onblur = handleValidate;
                 input.oninput = handleClearError;
+
             }
         }
 
@@ -85,6 +86,7 @@ function Validator(formSelector) {
 
             for (let rule of rules) {
                 errorMessage = rule(event.target.value);
+                // console.log(errorMessage);
                 if (errorMessage) break;
             }
 
@@ -104,6 +106,7 @@ function Validator(formSelector) {
 
         function handleClearError(event) {
             let formGroup = getParent(event.target, ".form-group");
+
             if (formGroup.classList.contains("invalid")) {
                 formGroup.classList.remove("invalid");
                 let formMessgae = formGroup.querySelector(".form-message");
@@ -119,16 +122,46 @@ function Validator(formSelector) {
     // Xu ly hanh vi submit form
     formElement.onsubmit = function (event) {
         event.preventDefault();
-        // let inputs = formElement.querySelectorAll("[name][rules]");
+
+        function handleValidate(event) {
+            let rules = formRules[event.target.name];
+            // console.log(rules);
+            let errorMessage;
+
+            for (let rule of rules) {
+                errorMessage = rule(event.target.value);
+                // console.log(errorMessage);
+                if (errorMessage) break;
+            }
+
+            // Neu co loi thi hien thi message loi ra UI
+            if (errorMessage) {
+                let formGroup = getParent(event.target, ".form-group");
+                if (formGroup) {
+                    formGroup.classList.add("invalid");
+                    let formMessgae = formGroup.querySelector(".form-message");
+                    if (formMessgae) {
+                        formMessgae.innerText = errorMessage;
+                    }
+                }
+            }
+            return !errorMessage;
+        }
+
+        let inputs = formElement.querySelectorAll("[name][rules]");
         let isValid = true;
-        // for (let input of inputs) {
-        //     // if(!handleValidate())
-        //     if (!handleValidate({ target: input })) {
-        //         isValid = false;
-        //     }
-        // }
+        // console.log(formRules)
+
+        for (let input of inputs) {
+
+            if (!handleValidate({ target: input })) {
+                isValid = false;
+            }
+        }
+
         if (isValid) {
             if (typeof _this.onSubmit === "function") {
+                // console.log(handleValidate())
                 let enableInputs = formElement.querySelectorAll("[name]");
                 let formValues = Array.from(enableInputs).reduce((values, input) => {
                     switch (input.type) {

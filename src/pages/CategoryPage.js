@@ -8,7 +8,7 @@ const result = (products) => {
         return `
             <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
                     <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('${product.image}')">
-                        <button data-id="${product.id}" class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                        <button id="add-button" class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
                             <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                         </button>
                     </div>
@@ -23,38 +23,32 @@ const result = (products) => {
     })
         .join("");
 }
-const ProductsPage = {
+const CategoryPage = {
     async afterRender() {
-        let {data: products} = await ProductApi.getAll()
+        const {id} = parseRequestUrl();
+        let {data: products} = await ProductApi.getCatePage(id)
+
         let btnPaginations = document.querySelectorAll('button[data-pagination]');
-        let btnAddToCart = document.querySelectorAll('button[data-id]');
         let {productCurrent} = pagination(products, 10);
-        // Pagination products
+
         btnPaginations.forEach(btn => {
             const id = btn.dataset.pagination;
             btn.addEventListener('click', async () => {
 
-                const index = (parseInt(id) - 1) * 10;
+                const index = (parseInt(id) - 1) * 10 ;
                 if (parseInt(id) === 1) {
                     productCurrent = products.slice(0, 10)
                 } else {
-                    productCurrent = products.slice(index, index + 9)
+                    productCurrent = products.slice(index, index+9)
                 }
                 document.querySelector('#products').innerHTML = result(productCurrent);
             })
         })
-        // Add to cart
-        btnAddToCart.forEach(btn => {
-            const id = btn.dataset.id;
-            btn.addEventListener('click', () => {
-                document.location.hash = `/cart/${id}`;
-            });
-        })
-
     },
     async render() {
-        // const {data: products} = await ProductApi.getAll();
-        const {data: products} = await ProductApi.getAll();
+        const {id} = parseRequestUrl();
+
+        const {data: products} = await ProductApi.getCatePage(id);
         const {data: categories} = await CategoriesApi.getAll();
 
         const menuCate = categories.map((cate) => {
@@ -64,7 +58,7 @@ const ProductsPage = {
             `;
         }).join('')
         const {page, productCurrent} = pagination(products, 10);
-
+        //
         const productHTML = result(productCurrent);
 
         return `
@@ -72,7 +66,7 @@ const ProductsPage = {
                 <div class="md:w-1/6 flex flex-col items-center border">   
                     <div @click.away="open = false" class="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0" x-data="{ open: false }">
                     <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-center">
-                      <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Categories</a>
+                      <p  class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Categories</p>
                       <button class="rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
                         <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
                           <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
@@ -111,7 +105,7 @@ const ProductsPage = {
                         </button>
                           <!-- Pagination -->                        
                         <div id="pagination"> 
-                         ${page}
+                            ${page}
                         </div>
                         <button class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                           <span class="sr-only">Next</span>
@@ -125,10 +119,10 @@ const ProductsPage = {
                   </div>
                 </div>
                 <div class=" grid grid-cols-3 gap-5 items-center justify-start" id="products">
-                ${productHTML}
+                    ${productHTML}
                 </div>
               </div>
         `;
     },
 };
-export default ProductsPage;
+export default CategoryPage;
