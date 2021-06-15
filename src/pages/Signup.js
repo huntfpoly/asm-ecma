@@ -7,12 +7,12 @@ const Signup = {
     afterRender() {
         let form = new Validator('#form');
         form.onSubmit = async (data) => {
-            const {data: {accessToken: token}} = await UserApi.register(data);
+            const {data: {accessToken: token}} = await UserApi.register({...data, isAdmin: false, avatar: '' });
             localStorage.setItem('token', token);
             const {sub: id} = jwt_decode(token);
             const {data: user} = await UserApi.getUser(id, token);
             localStorage.setItem('user', JSON.stringify(user));
-            alert('dang nhap thanh cong')
+            alert('dang ky thanh cong')
 
             window.location.href = 'http://localhost:8080/';
 

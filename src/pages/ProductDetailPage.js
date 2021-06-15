@@ -11,6 +11,7 @@ const ProductDetailPage = {
     async render() {
         const { id } = parseRequestUrl();
         const { data: product } = await ProductApi.get(id);
+        console.log(product)
 
         // const product = products.find((product) => product.id === request.id);
 

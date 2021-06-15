@@ -33,13 +33,12 @@ function Validator(formSelector) {
                     : `Vui long nhap it nhat ${min} ki tu`;
             };
         },
-        max: function (max) {
-            return function (value) {
-                return value.length <= max
-                    ? undefined
-                    : `Vui long nhap nhieu nhat ${max} ki tu`;
-            };
-        },
+        max:  (max) => {
+            return value => value.length <= max ? undefined: `Vui long nhap nhieu nhat ${max} ki tu`;
+        }
+        ,number: function (value) {
+            return typeof parseInt(value) === 'number' && isFinite(value) && value > 0 ? undefined : "Vui long nhap so va lon hon 0";
+        }
     };
     // lay ra form element trong DOM
     let formElement = document.querySelector(formSelector);
@@ -63,6 +62,8 @@ function Validator(formSelector) {
                         ruleFunc = ruleFunc(ruleInfo[1]);
                     }
                     // console.log(ruleFunc);
+
+                    // Kiểm tra value của key [input.name] trong object formRules có phải array hay k
                     if (Array.isArray(formRules[input.name])) {
                         // console.log(rule);
 
@@ -80,19 +81,25 @@ function Validator(formSelector) {
 
         // hàm thực hiện validate
         function handleValidate(event) {
+            // rules la 1 mảng chứa các function được thêm bên trên
             let rules = formRules[event.target.name];
             // console.log(rules);
             let errorMessage;
 
             for (let rule of rules) {
+                // e.target.value là lấy ra giá trị của field khi mình focus vào
                 errorMessage = rule(event.target.value);
+                // Nó thực hiện các function ở validatorRules và trả về giá trị
+                // console.log(rule);
                 // console.log(errorMessage);
                 if (errorMessage) break;
             }
 
             // Neu co loi thi hien thi message loi ra UI
             if (errorMessage) {
+                // tìm ra thằng cha có class là form-group
                 let formGroup = getParent(event.target, ".form-group");
+                //Nếu mà thấy thì ta mới add class vào
                 if (formGroup) {
                     formGroup.classList.add("invalid");
                     let formMessgae = formGroup.querySelector(".form-message");
@@ -103,7 +110,7 @@ function Validator(formSelector) {
             }
             return !errorMessage;
         }
-
+        // function xử lý clear error
         function handleClearError(event) {
             let formGroup = getParent(event.target, ".form-group");
 

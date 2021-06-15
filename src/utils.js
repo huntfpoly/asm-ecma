@@ -9,9 +9,13 @@ export const parseRequestUrl = () => {
         id: request[2],
     };
 };
-export const rerender = async (component) => {
-    document.getElementById('root').innerHTML = await component.render();
-    if (component.afterRender) await component.afterRender();
+export const rerender = async (component, position ='') => {
+    if(position!==''){
+        document.getElementById(`${position}`).innerHTML = await component.render();
+    }else {
+        document.getElementById('root').innerHTML = await component.render();
+        if (component.afterRender) await component.afterRender();
+    }
 };
 export const showLoading = () => {
     document.getElementById('loading-overlay').classList.add('active');

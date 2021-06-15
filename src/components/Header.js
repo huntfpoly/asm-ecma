@@ -115,7 +115,7 @@ const Header = {
         })
     },
     async render() {
-        const {lastName, avatar} = getUserInfo();
+        const {token, isAdmin, avatar, lastName} = getUserInfo();
         const cartItems = getCartItems();
         const {data: categories} = await CategoriesApi.getAll();
 
@@ -166,7 +166,7 @@ const Header = {
                         </ul>
                     </li>
                     
-                    ${lastName ? `<li class=" relative flex items-center group cursor-pointer  px-2 py-3" @click="openUser = true"> 
+                    ${token ? `<li class=" relative flex items-center group cursor-pointer  px-2 py-3" @click="openUser = true"> 
                         <div class="flex justify-center items-center space-x-3 cursor-pointer">
                           <div class="h-10 w-10 rounded-full overflow-hidden ">
                             <img src="${avatar}" alt="" class="w-full h-full object-cover">
@@ -177,7 +177,7 @@ const Header = {
                         </div>
                         <ul class="w-full absolute z-10 top-full right-0 bg-gray-100 rounded" x-show="openUser"  @click.away="openUser = false"> 
                             <li > 
-                                <a href="/#/admin-categories" class="inline-block w-full py-2 px-3  hover:text-blue-500 no-underline">DashBoard</a>
+                                ${isAdmin?`<a href="/#/admin-categories" class="inline-block w-full py-2 px-3  hover:text-blue-500 no-underline">DashBoard</a>`:''}
                             </li>
                                 <li > 
                                 <a href="/#/profile" class="inline-block w-full py-2 px-3  hover:text-blue-500 no-underline">Profile</a>

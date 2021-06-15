@@ -3,8 +3,8 @@
     {
       "name": "Toys",
       "slug": "Toys",
-      "image": "https://firebasestorage.googleapis.com/v0/b/ecma-a7973.appspot.com/o/images%2FScreenshot%20from%202021-05-25%2000-28-30.png?alt=media&token=8d4374e4-e7b7-42f9-b589-ea2d053330e7",
-      "updated_at": 1623146018987,
+      "image": "https://firebasestorage.googleapis.com/v0/b/ecma-a7973.appspot.com/o/images%2FScreenshot%20from%202021-05-25%2000-27-33.png?alt=media&token=52f7d239-f339-4983-a93d-f38600e491bd",
+      "updated_at": 1623483689712,
       "id": "d905add0-b0e3-4ccf-9499-d6a430ce2f58"
     },
     {
@@ -30,31 +30,18 @@
       "image": "http://placeimg.com/640/480/technics",
       "created_at": 1622974912054,
       "created_update": 1622974912054
+    },
+    {
+      "name": "12312",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ecma-a7973.appspot.com/o/images%2Fip12.jpeg?alt=media&token=9918c470-bbc5-4977-8b73-65e698131e8b",
+      "": "",
+      "id": "60af8c71-75ca-4c01-ad0a-8fcb9708e550",
+      "slug": "12312",
+      "created_at": 1623604808372,
+      "updated_at": 1623604808372
     }
   ],
   "products": [
-    {
-      "categoryId": "d905add0-b0e3-4ccf-9499-d6a430ce2f58",
-      "id": "d8452072-1f87-44b0-8e56-87ab2a484c33",
-      "name": "Rustic Granite Hat",
-      "slug": "Rustic-Granite-Hat",
-      "price": "316.00",
-      "description": "sáu nón anh xuồng con độc không thương lầu lầu dép đâu bảy bảy ừ bàn thì chín thôi làm hết nha bè mướn khoan nước thương mây ruộng chỉ được ruộng bơi ghét tám chín quần kim chín thế thôi giày trời biết thích ừ là nón khoan áo",
-      "image": "http://placeimg.com/640/480/business",
-      "created_at": 1622974912055,
-      "created_update": 1622974912055
-    },
-    {
-      "categoryId": "d905add0-b0e3-4ccf-9499-d6a430ce2f58",
-      "id": "96bf7ab7-458a-4ef1-b4e8-185e49493913",
-      "name": "Handcrafted Cotton Mouse",
-      "slug": "Handcrafted-Cotton-Mouse",
-      "price": "437.00",
-      "description": "chỉ mua nước biển một mượn đâu năm hết tủ viết tủ khoảng á máy vàng hết mười chết khoảng hết bốn viết nha bè vẽ tui hóa tôi thuyền là thuyền hai được hương thuê quần phá đã á cái không ghét áo vẽ mây anh hết núi xanh",
-      "image": "http://placeimg.com/640/480/city",
-      "created_at": 1622974912055,
-      "created_update": 1622974912055
-    },
     {
       "categoryId": "d905add0-b0e3-4ccf-9499-d6a430ce2f58",
       "id": "15b1eca9-2556-43e5-a158-0553667cb4aa",
@@ -65,27 +52,6 @@
       "image": "http://placeimg.com/640/480/technics",
       "created_at": 1622974912055,
       "created_update": 1622974912055
-    },
-    {
-      "categoryId": "d905add0-b0e3-4ccf-9499-d6a430ce2f58",
-      "id": "5f3d3d57-ce52-4d8d-8f57-f30c1ca70aa8",
-      "name": "Awesome Metal Hat",
-      "slug": "Awesome-Metal-Hat",
-      "price": "421.00",
-      "description": "vẽ một biển nước thôi ghét đâu mướn hết vá khâu tím ừ thuê bè được được tôi tám là mây khoan thuyền độc nhà hết khoảng hết đã chết dép mua bàn ghét vẽ quê năm thì thuê đồng chìm nhà sáu năm ruộng máy núi là ruộng đánh",
-      "image": "http://placeimg.com/640/480/fashion",
-      "created_at": 1622974912055,
-      "created_update": 1622974912055
-    },
-    {
-      "name": "Tasty Plastic Mouse 1",
-      "slug": "Tasty-Plastic-Mouse-1",
-      "price": "870.00",
-      "categoryId": "462870c2-031c-44a5-966b-0e5f61ff0e35",
-      "description": "lầu hóa hóa chìm biển khâu chết con chín khoan nhà vàng chết mướn đỏ gió mười biển hết lầu trăng nghỉ vàng khâu chìm bạn được là chết may bốn mười chết biển mây ba leo năm thích kim xanh máy nghỉ bàn khoảng thuyền bàn gì ruộng trời",
-      "image": "https://firebasestorage.googleapis.com/v0/b/ecma-a7973.appspot.com/o/images%2FScreenshot%20from%202021-05-25%2012-48-14.png?alt=media&token=5d4508ce-4bce-4a49-baac-d883557adb15",
-      "updated_at": 1623288622578,
-      "id": "b0c58888-a75f-4130-bd73-ff4475df6de9"
     },
     {
       "categoryId": "462870c2-031c-44a5-966b-0e5f61ff0e35",
@@ -117,17 +83,6 @@
       "price": "533.00",
       "description": "ghét thích ờ sáu năm đang nha anh tím leo giày máy đồng thích đạp thương tui thuê nón thuê anh ừ mướn bảy mây hai mướn tàu vẽ ghế leo vẽ độc bàn sáu hai chỉ thế đồng bàn viết thuê chín kim quần hai bơi bơi năm bốn",
       "image": "http://placeimg.com/640/480/transport",
-      "created_at": 1622974912056,
-      "created_update": 1622974912056
-    },
-    {
-      "categoryId": "7a0296ff-eff6-438c-be69-0ce6793eb686",
-      "id": "edcb9af8-352d-4fc1-8238-26be7ab5e136",
-      "name": "Handmade Steel Shirt",
-      "slug": "Handmade-Steel-Shirt",
-      "price": "22.00",
-      "description": "thì lầu tôi vá giày bốn tàu thương vá thương lầu làm mua thôi bạn ba thế yêu em làm đồng quần ba tô nghỉ áo ừ leo mướn ghét chìm bốn một thuyền ờ ghét trời tủ gì đá ba phá ba đồng tui anh lỗi viết biết thuê",
-      "image": "http://placeimg.com/640/480/food",
       "created_at": 1622974912056,
       "created_update": 1622974912056
     },
@@ -166,17 +121,6 @@
     },
     {
       "categoryId": "a9ab681a-1693-43e1-adc2-f77fcae180a2",
-      "id": "5be9a8c5-746f-4783-904b-36ae8fd35c16",
-      "name": "Generic Cotton Shoes",
-      "slug": "Generic-Cotton-Shoes",
-      "price": "499.00",
-      "description": "bơi kim thương quần gió hóa cửa cái ruộng giết trời bè lỗi xe vàng mua tôi tím mười gì thuê anh xuồng khoan đâu xuồng quần lầu anh hết đã giày gì hương là đâu hai tám tủ ừ bốn leo đồng là biển ừ xuồng thích thuyền xe",
-      "image": "http://placeimg.com/640/480/food",
-      "created_at": 1622974912057,
-      "created_update": 1622974912057
-    },
-    {
-      "categoryId": "a9ab681a-1693-43e1-adc2-f77fcae180a2",
       "id": "6b07e562-8445-409d-91c8-a4c1d95b583d",
       "name": "Intelligent Concrete Fish",
       "slug": "Intelligent-Concrete-Fish",
@@ -209,32 +153,116 @@
       "created_update": 1622974912057
     },
     {
-      "name": "123",
-      "slug": "123",
-      "price": "123",
+      "name": "1234",
+      "slug": "1244",
+      "price": "1243",
       "categoryId": "462870c2-031c-44a5-966b-0e5f61ff0e35",
+      "description": "1234",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ecma-a7973.appspot.com/o/images%2Fip12.jpeg?alt=media&token=3f45dcef-28e2-4a06-b83b-b4cac1a7a686",
+      "": "",
+      "id": "2c5bfa7c-bbbd-46e8-b50f-662ff8a388e8",
+      "created_at": 1623692394537,
+      "updated_at": 1623692394537
+    },
+    {
+      "name": "asdfadf",
+      "slug": "asdf",
+      "price": "12312321",
+      "categoryId": "a9ab681a-1693-43e1-adc2-f77fcae180a2",
       "description": "123",
-      "image": "https://firebasestorage.googleapis.com/v0/b/ecma-a7973.appspot.com/o/images%2FScreenshot%20from%202021-05-25%2000-28-30.png?alt=media&token=c281a373-eb47-4ded-8262-34dd0a8c16e6",
-      "created_at": 1623287054058,
-      "updated_at": 1623287054058,
-      "id": "oRtbv6g"
+      "image": "https://firebasestorage.googleapis.com/v0/b/ecma-a7973.appspot.com/o/images%2FScreenshot%20from%202021-06-03%2009-44-21.png?alt=media&token=84fb9daa-e56e-4bcd-b816-dd92a37e0046",
+      "": "",
+      "id": "d0efcc32-6780-47c7-8cc4-0dfdfff2d7e6",
+      "created_at": 1623692927268,
+      "updated_at": 1623692927268
+    },
+    {
+      "name": "adadda",
+      "slug": "adadad",
+      "price": "123",
+      "categoryId": "7a0296ff-eff6-438c-be69-0ce6793eb686",
+      "description": "asdfadfa",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ecma-a7973.appspot.com/o/images%2FScreenshot%20from%202021-06-06%2011-07-29.png?alt=media&token=010a470b-fd57-47c8-a9aa-a9a57c6b9a7e",
+      "": "",
+      "id": "cf8cc6ee-6605-4dfd-8daf-011273458c7e",
+      "created_at": 1623693084355,
+      "updated_at": 1623693084355
     }
   ],
   "users": [
     {
       "_id": "1",
       "email": "admin@gmail.com",
-      "password": "$2a$10$9Bsh68lDAdg.3BCSBfQtae6weFcMXzKnMrYyPFjHl00jgj3TdKhyW",
-      "firstName": "Pham",
-      "lastName": "Hieu",
-      "avatar": "https://firebasestorage.googleapis.com/v0/b/ecma-a7973.appspot.com/o/images%2FScreenshot%20from%202021-05-25%2000-28-30.png?alt=media&token=a84f6faa-3108-4169-ae51-2f8850869699",
+      "password": "$2a$10$AJ30IjifNwr0PLckRzwUQuaHiaasFZWrcgJrqytpY1qfuolqmz3ze",
+      "firstName": "admin",
+      "lastName": "admin",
+      "avatar": "https://firebasestorage.googleapis.com/v0/b/ecma-a7973.appspot.com/o/images%2FScreenshot%20from%202021-05-25%2000-28-30.png?alt=media&token=100c6bbd-371d-4cbf-ad13-567ea4c6c736",
       "isAdmin": true,
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTYyMzI0ODAzNywiZXhwIjoxNjIzMjUxNjM3LCJzdWIiOiIxIn0.5nG7-qwts6REVXXHwLIkrHDpKyd68zfEjOFO2Iam8jw",
-      "updated_at": 1623248135966,
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTYyMzY5MjMzNCwiZXhwIjoxNjIzNjk1OTM0LCJzdWIiOiIxIn0.pz3k1Abi_cBqzQsizyfvqZqFuRXkrx_8FA4fm5pA0KE",
+      "updated_at": 1623694870797,
       "id": 1
+    },
+    {
+      "email": "admin1@gmail.com",
+      "password": "$2a$10$XjNCPDXpE4BDnk1yf.hhiOSJHIyinCQOsT.pOiSiucfibCHnORHoq",
+      "firstName": "admin1",
+      "lastName": "admin",
+      "isAdmin": false,
+      "avatar": "",
+      "created_at": 1623601448533,
+      "updated_at": 1623601448533,
+      "id": 2
     }
   ],
   "orders": [
+    {
+      "orderItems": [
+        {
+          "product": "5f3d3d57-ce52-4d8d-8f57-f30c1ca70aa8",
+          "name": "Awesome Metal Hat",
+          "image": "http://placeimg.com/640/480/fashion",
+          "price": "421.00",
+          "description": "vẽ một biển nước thôi ghét đâu mướn hết vá khâu tím ừ thuê bè được được tôi tám là mây khoan thuyền độc nhà hết khoảng hết đã chết dép mua bàn ghét vẽ quê năm thì thuê đồng chìm nhà sáu năm ruộng máy núi là ruộng đánh",
+          "qty": 1
+        }
+      ],
+      "totalPrice": 421,
+      "data": {
+        "firstName": "admin",
+        "lastName": "admin",
+        "email": "admin@gmail.com",
+        "address": "asdf"
+      },
+      "status": true,
+      "userId": "1",
+      "created_at": 1623656441364,
+      "updated_at": 1623695162685,
+      "id": 2
+    },
+    {
+      "orderItems": [
+        {
+          "product": "7f47497b-fcef-46f6-bfc7-cce2f6c6cb94",
+          "name": "Unbranded Granite Car",
+          "image": "http://placeimg.com/640/480/nature",
+          "price": "665.00",
+          "description": "mượn lỗi con đá nước tàu em giết máy tủ là mua chìm hóa áo trời là ác thì được nón ừ may mây gió kim thương đâu chín tô hương không hai thôi được giày chỉ mượn dép chín tám xe máy ác ba tủ mướn mua biết mười",
+          "qty": 1
+        }
+      ],
+      "totalPrice": 665,
+      "data": {
+        "firstName": "admin",
+        "lastName": "admin",
+        "email": "admin@gmail.com",
+        "address": "à thế à"
+      },
+      "status": false,
+      "userId": "1",
+      "created_at": 1623656885087,
+      "updated_at": 1623694958584,
+      "id": 3
+    },
     {
       "orderItems": [
         {
@@ -248,14 +276,115 @@
       ],
       "totalPrice": 437,
       "data": {
-        "name": "Hieu",
+        "firstName": "first Admin",
+        "lastName": "last Admin",
         "email": "admin@gmail.com",
-        "address": "asfdf",
-        "_id": "1"
+        "address": "sadf"
       },
-      "status": 1,
-      "created_at": 1623255113224,
-      "updated_at": 1623255113224,
+      "status": false,
+      "userId": "1",
+      "created_at": 1623657015416,
+      "updated_at": 1623695160759,
+      "id": 4
+    },
+    {
+      "orderItems": [
+        {
+          "product": "15b1eca9-2556-43e5-a158-0553667cb4aa",
+          "name": "Ergonomic Metal Shirt",
+          "image": "http://placeimg.com/640/480/technics",
+          "price": "470.00",
+          "description": "dép ghét đã mười nghỉ quần vàng phá việc hai vá đâu may ghế biết thuê gì yêu mượn lỗi leo nón cái được hết biển đạp phá ghế tám thương mây việc hóa nước anh nước làm hết tám năm khâu quần nha yêu ruộng được sáu mua mượn",
+          "qty": 1
+        },
+        {
+          "product": "5f3d3d57-ce52-4d8d-8f57-f30c1ca70aa8",
+          "name": "Awesome Metal Hat",
+          "image": "http://placeimg.com/640/480/fashion",
+          "price": "421.00",
+          "description": "vẽ một biển nước thôi ghét đâu mướn hết vá khâu tím ừ thuê bè được được tôi tám là mây khoan thuyền độc nhà hết khoảng hết đã chết dép mua bàn ghét vẽ quê năm thì thuê đồng chìm nhà sáu năm ruộng máy núi là ruộng đánh",
+          "qty": 1
+        },
+        {
+          "product": "96bf7ab7-458a-4ef1-b4e8-185e49493913",
+          "name": "Handcrafted Cotton Mouse",
+          "image": "http://placeimg.com/640/480/city",
+          "price": "437.00",
+          "description": "chỉ mua nước biển một mượn đâu năm hết tủ viết tủ khoảng á máy vàng hết mười chết khoảng hết bốn viết nha bè vẽ tui hóa tôi thuyền là thuyền hai được hương thuê quần phá đã á cái không ghét áo vẽ mây anh hết núi xanh",
+          "qty": 1
+        }
+      ],
+      "totalPrice": 1328,
+      "data": {
+        "firstName": "admin",
+        "lastName": "admin",
+        "email": "admin@gmail.com",
+        "address": "asfasdfasdfasdasdf"
+      },
+      "status": false,
+      "userId": "1",
+      "created_at": 1623660733887,
+      "updated_at": 1623691608917,
+      "id": 5
+    },
+    {
+      "orderItems": [
+        {
+          "product": "7f47497b-fcef-46f6-bfc7-cce2f6c6cb94",
+          "name": "Unbranded Granite Car",
+          "image": "http://placeimg.com/640/480/nature",
+          "price": "665.00",
+          "description": "mượn lỗi con đá nước tàu em giết máy tủ là mua chìm hóa áo trời là ác thì được nón ừ may mây gió kim thương đâu chín tô hương không hai thôi được giày chỉ mượn dép chín tám xe máy ác ba tủ mướn mua biết mười",
+          "qty": 2
+        },
+        {
+          "product": "94a65cf6-2048-44fb-b1e1-b5dcd5a1b17f",
+          "name": "Handmade Frozen Bike",
+          "image": "http://placeimg.com/640/480/business",
+          "price": "636.00",
+          "description": "tô là giết đồng ác biển vàng khâu năm đánh chỉ lỗi hàng leo vẽ thôi bơi bàn gió nhà ngọt giày thuê thôi đỏ bạn thuê đồng ba tôi hai khoảng giết giết ngọt nước viết xanh anh đã xe thương gì đá con xe làm hai thuyền đang",
+          "qty": 3
+        },
+        {
+          "product": "15b1eca9-2556-43e5-a158-0553667cb4aa",
+          "name": "Ergonomic Metal Shirt",
+          "image": "http://placeimg.com/640/480/technics",
+          "price": "470.00",
+          "description": "dép ghét đã mười nghỉ quần vàng phá việc hai vá đâu may ghế biết thuê gì yêu mượn lỗi leo nón cái được hết biển đạp phá ghế tám thương mây việc hóa nước anh nước làm hết tám năm khâu quần nha yêu ruộng được sáu mua mượn",
+          "qty": 2
+        },
+        {
+          "product": "6f17eecb-159f-445f-b505-2b9cfeea102f",
+          "name": "Small Cotton Bike",
+          "image": "http://placeimg.com/640/480/cats",
+          "price": "708.00",
+          "description": "chìm quần chỉ ba đồng nghỉ tàu tím ác bảy đá chỉ đá viết bảy bảy làm bè hai cửa hết thế mượn đang đánh vá ghế hóa áo biển nước xuồng xe việc kim tủ em bốn tủ nghỉ hàng độc tui đã thì được một tủ thương quần",
+          "qty": 1
+        }
+      ],
+      "totalPrice": 4886,
+      "data": {
+        "firstName": "admin 12323",
+        "lastName": "admin",
+        "email": "admin@gmail.com",
+        "address": "asdfadf"
+      },
+      "status": false,
+      "userId": "1",
+      "created_at": 1623694835495,
+      "updated_at": 1623694950825,
+      "id": 6
+    }
+  ],
+  "tests": [
+    {
+      "created_at": 1623345128037,
+      "updated_at": 1623345128037,
+      "id": 1
+    },
+    {
+      "created_at": 1623345162020,
+      "updated_at": 1623345162020,
       "id": 2
     }
   ]

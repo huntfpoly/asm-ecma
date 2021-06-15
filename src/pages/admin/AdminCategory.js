@@ -1,6 +1,7 @@
 import CategoriesApi from "../../api/CategoriesApi";
 import sidebarAdmin from "../../components/SidebarAdmin";
 import titleHeaderAdmin from "../../components/titleHeaderAdmin";
+import Button, {ButtonLink} from "../../components/Button";
 
 const result = (categories) => {
     return categories.map(cate => {
@@ -12,14 +13,15 @@ const result = (categories) => {
                         <img class="w-16 h-16" src="${cate.image}" alt="image">
                     </td>
                      <td class="p-3 px-5 flex justify-end">
-                        <a href="/#/admin-edit-category/${cate.id}" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded 
-                                focus:outline-none focus:shadow-outline">
-                            Edit
-                        </a>
-                        <button type="button" data-id="${cate.id}" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded 
-                                focus:outline-none focus:shadow-outline">
-                            Delete
-                        </button>
+                        ${ButtonLink(
+                            {
+                                linkUrl: `/#/admin-edit-category/${cate.id}`,
+                                text:'edit',
+                                bg: 'bg-blue-500',
+                                hoverBg: 'bg-blue-700'
+                            }
+                        )}
+                        ${Button({bg:'bg-red-500', text:'delete', name:cate.id})}
                     </td>
                 </tr>`
     }).join('');
@@ -37,10 +39,14 @@ const AdminCategory = {
                     ${titleHeaderAdmin('List Categories')}
                     <div class="px-3 py-4 text-gray-700">
                         <div class="flex justify-end">   
-                            <a href="/#/admin-add-category" class="text-lg bg-green-500 hover:bg-green-700 text-white py-1 px-2 
-                                    rounded cursor-pointer">
-                                Create
-                            </a>
+                            ${ButtonLink(
+                                {
+                                    linkUrl:'/#/admin-add-category',
+                                    text: 'create',
+                                    bg:'bg-green-500',
+                                    hoverBg:'bg-green-700'
+                                }
+                            )}
                         </div>
                         <table class="w-full text-md bg-white shadow-md rounded mb-4">
                             <thead> 
@@ -68,11 +74,11 @@ const AdminCategory = {
         `;
     },
     afterRender() {
-        let btns = document.querySelectorAll('button[data-id]');
+        let btns = document.querySelectorAll('button[name]');
         let btnSort = document.querySelectorAll('button[data-sort]');
         // Remove
         btns.forEach(btn => {
-            const id = btn.dataset.id;
+            const id = btn.name;
 
             btn.addEventListener('click', () => {
                 const question = confirm('Ban co muon xoa k?')

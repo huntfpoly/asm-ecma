@@ -1,8 +1,9 @@
 import { axiosClient } from "./axiosClient";
+import {getUserInfo} from "../localStorage";
 
 const ProductApi = {
     getAll() {
-        const url = `/products`;
+        const url = `/products?_sort=updated_at&_order=desc`;
         return axiosClient.get(url);
     },
     get(id) {
@@ -19,13 +20,19 @@ const ProductApi = {
     },
     add(product){
         const url = `/products`;
+        const { token } = getUserInfo();
+        axiosClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         return axiosClient.post(url, product)
     },
     edit(id, product){
+        const { token } = getUserInfo();
+        axiosClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         const url = `/products/${id}`;
         return axiosClient.put(url, product)
     },
     remove(id){
+        const { token } = getUserInfo();
+        axiosClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         const url = `/products/${id}`;
         return axiosClient.delete(url)
     },

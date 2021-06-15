@@ -9,11 +9,13 @@ const Signin = {
     afterRender() {
         let form = new Validator('#form');
         form.onSubmit = async (data) => {
+            console.log(data)
             try {
+
                 const {data: {accessToken: token}} = await UserApi.login(data);
-                localStorage.setItem('token', token)
                 const {sub: _id} = jwt_decode(token)
                 const {data: user} = await UserApi.getUser(_id, token)
+                console.log(user)
                 setUserInfo({
                     _id,
                     ...user,

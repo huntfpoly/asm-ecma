@@ -6,7 +6,7 @@ import {getCartItems, setCartItems} from "../localStorage";
 import Header from "../components/Header";
 
 
-export const addToCart = (item, forceUpdate = false) => {
+export const addToCart = async (item, forceUpdate = false) => {
     let cartItems = getCartItems();
     // Kiểm tra tồn tại của product trong cartItem
     const existItem = cartItems.find((x) => x.product === item.product);
@@ -28,20 +28,26 @@ export const addToCart = (item, forceUpdate = false) => {
     // Sau đó thay đổi setItem trong localStorage. phương thức này có sẵn
     setCartItems(cartItems);
     if (forceUpdate) {
-        rerender(CartProduct);
+
+        await rerender(CartProduct);
     }
+
+
 }
-export const removeFromCart = (id) => {
+export const removeFromCart = async (id) => {
     setCartItems(getCartItems().filter((x) => x.product !== id));
     if (id === parseRequestUrl().id) {
         document.location.hash = '/cart';
     } else {
-        rerender(CartProduct);
+        await rerender(CartProduct);
     }
 }
 
 const CartProduct = {
     async afterRender() {
+
+        await rerender(Header, 'header')
+
         // Tìm ra các button có attribute là plus và minus
         // Sau đó dùng forEach gắn event onClick cho chúng
         let btnPlus = document.querySelectorAll('button[plus]');
@@ -77,10 +83,11 @@ const CartProduct = {
 
     },
     async render() {
+        await rerender(Header, 'header')
         const request = parseRequestUrl();
         if (request.id) {
             const {data: product} = await ProductApi.get(request.id);
-            addToCart({
+            await addToCart({
                 product: product.id,
                 name: product.name,
                 image: product.image,

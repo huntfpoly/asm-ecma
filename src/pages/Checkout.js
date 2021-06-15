@@ -2,15 +2,17 @@ import {cleanCart, getCartItems, getUserInfo} from "../localStorage";
 import Validator from "../../public/js/validator";
 import {hideLoading, showLoading} from "../utils";
 import OrderApi from "../api/OrderApi";
+import InputForm from "../components/InputForm";
 
-const convertCartToOrder = (data) => {
+const convertCartToOrder = ({data, userId}) => {
     const orderItems = getCartItems();
     const totalPrice = orderItems.reduce((a, c) => a + c.price * c.qty, 0);
     return {
         orderItems,
         totalPrice,
         data,
-        status: 1
+        status: 1,
+        userId
     }
 }
 
@@ -18,8 +20,8 @@ const Checkout = {
     afterRender() {
         let form = new Validator('#formCheckout');
         form.onSubmit = async (data) => {
-            const {_id} = getUserInfo();
-            const order = convertCartToOrder({...data, _id});
+            const {_id: userId} = getUserInfo();
+            const order = convertCartToOrder({data, userId});
 
             showLoading();
             try {
@@ -34,7 +36,7 @@ const Checkout = {
         };
     },
     async render() {
-        const {lastName, email} = getUserInfo();
+        const {lastName, firstName, email} = getUserInfo();
         const cartItems = getCartItems();
         const listItem = cartItems.map(item => {
             return `
@@ -66,21 +68,11 @@ const Checkout = {
                 <div class="w-full lg:w-1/2 order-2">
                     <div class="mt-8 lg:w-3/4">
                        <form action="" method="POST" class="form" id="formCheckout">
-                            <div class="form-group flex flex-col mb-5">
-                              <label class="">Name</label>
-                              <input type="text" name="name" rules="required" value="${lastName ? lastName : ``}" class="form-control px-4 py-2 border focus:ring-gray-500 focus:border-blue-500 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Name">
-                               <span class="form-message"></span>
-                            </div>
-                            <div class="form-group flex flex-col mb-5">
-                              <label class="">Email</label>
-                              <input type="text" name="email" rules="required" value="${email ? email : ``}" class="form-control px-4 py-2 border focus:ring-gray-500 focus:border-blue-500 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Email">
-                               <span class="form-message"></span>
-                            </div>
-                            <div class="form-group flex flex-col mb-5">
-                              <label class="">Address</label>
-                              <input type="text" name="address" rules="required" class="form-control px-4 py-2 border focus:ring-gray-500 focus:border-blue-500 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Address">
-                               <span class="form-message"></span>
-                            </div>
+                            ${InputForm({label:'Fisrt Name',nameInput:'firstName', value: firstName?firstName:''})}
+                            ${InputForm({label:'Last Name',nameInput:'lastName', value: lastName?lastName:''})}
+                            ${InputForm({label:'Email',nameInput:'email', value: email?email:'', typeInput:'email'})}
+                            ${InputForm({label:'Address',nameInput:'address'})}
+
                             <div class="flex justify-center"> 
                                 <button class="form-submit text-lg bg-green-500 hover:bg-green-700 text-white py-1 px-2 
                                     rounded cursor-pointer">Place Order</button>

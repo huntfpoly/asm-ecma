@@ -7,6 +7,8 @@ import sidebarAdmin from "../../components/SidebarAdmin";
 import Validator from "../../../public/js/validator";
 import CategoriesApi from "../../api/CategoriesApi";
 import {hideLoading, showLoading} from "../../utils";
+import InputForm from "../../components/InputForm";
+import Button, {ButtonLink} from "../../components/Button";
 
 const AdminAddCategory = {
     async render() {
@@ -18,27 +20,22 @@ const AdminAddCategory = {
                 ${titleHeaderAdmin('Create Category')}
                 <div class="px-3 py-4 text-gray-700">
                     <div class="flex justify-end">
-                        <a href="/#/admin-categories" class="text-lg bg-gray-500 hover:bg-gray-700 text-white py-1 px-2 mr-3 
-                                rounded cursor-pointer">
-                            Back
-                        </a>
+                        ${ButtonLink(
+                            {
+                                linkUrl:'/#/admin-categories',
+                                text:'back',
+                                bg: 'bg-gray-500',
+                                hoverBg: 'bg-gray-700'
+                            }
+                        )}
                     </div>
                 <div> 
-                       <form action="" method="POST" class="form" id="formAdd">
-                            <div class="form-group flex flex-col mb-5">
-                              <label class="">Name</label>
-                              <input type="text" name="name" rules="required" class="form-control px-4 py-2 border focus:ring-gray-500 focus:border-blue-500 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Name">
-                               <span class="form-message"></span>
-                            </div>
-                            <div class="form-group flex flex-col mb-5">
-                                <label class="">image</label>
-                                <input type="file" name="image" rules="required" class="form-control px-4 py-2 border focus:ring-gray-500 focus:border-blue-500 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
-                                <span class="form-message"></span>
-                            </div>
-                            <button class="form-submit text-lg bg-green-500 hover:bg-green-700 text-white py-1 px-2 
-                                rounded cursor-pointer">save</button> 
-                        </form>
-                       
+                    <form action="" method="POST" class="form" id="formAdd">
+                       ${InputForm({label:'name', nameInput:'name', rules:'required|min:4'})}
+                       ${InputForm({label:'image', nameInput:'image', rules:'required',typeInput:'file'})}
+                       ${Button({})}
+
+                    </form>
                     </div>
                 </div>
                 

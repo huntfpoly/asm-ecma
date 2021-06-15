@@ -4,6 +4,8 @@ import {hideLoading, parseRequestUrl, showLoading} from "../../utils";
 import Validator from "../../../public/js/validator";
 import sidebarAdmin from "../../components/SidebarAdmin";
 import titleHeaderAdmin from "../../components/titleHeaderAdmin";
+import Button, {ButtonLink} from "../../components/Button";
+import InputForm from "../../components/InputForm";
 
 const AdminEditCategory = {
     async render() {
@@ -17,31 +19,25 @@ const AdminEditCategory = {
                     ${titleHeaderAdmin('Edit Category')}
                     <div class="px-3 py-4 text-gray-700">
                         <div class="flex justify-end">   
-                            <a href="/#/admin-categories" class="text-lg bg-gray-500 hover:bg-gray-700 text-white py-1 px-2 mr-3 
-                                    rounded cursor-pointer">
-                                Back
-                            </a>
-                          
+                           ${ButtonLink(
+                               {
+                                   linkUrl:'/#/admin-categories',
+                                   text:'back',
+                                   bg: 'bg-gray-500',
+                                   hoverBg: 'bg-gray-700'
+                               }
+                            )}
                         </div>
                         <div> 
-                           <form action="" method="POST" class="form" id="formEdit">
-                                <div class="form-group flex flex-col mb-5">
-                                  <label class="">Name</label>
-                                  <input type="text" name="name" rules="required" value="${category.name}" 
-                                    class="form-control px-4 py-2 border focus:ring-gray-500 focus:border-blue-500 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Name">
-                                </div>
-                                <div class="form-group flex flex-col mb-5">
-                                  <label class="">Slug</label>
-                                  <input type="text" name="slug" rules="required" value="${category.slug}"  
-                                  class="form-control px-4 py-2 border focus:ring-gray-500 focus:border-blue-500 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Slug">
-                                </div>
+                            <form action="" method="POST" class="form" id="formEdit">
+                                ${InputForm({label:'name', nameInput:'name',value:category.name, rules:'required'})}
+                                ${InputForm({label:'slug', nameInput:'slug',value:category.slug, rules:'required'})}
                                 <div class="form-group flex flex-col mb-5">
                                   <label class="">image</label>
                                   <img src="${category.image}" class="w-3/12 my-3" alt="image">
                                   <input type="file" name="image" rules="required" class="form-control px-4 py-2 border focus:ring-gray-500 focus:border-blue-500 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" >
                                 </div>
-                                <button class="form-submit text-lg bg-green-500 hover:bg-green-700 text-white py-1 px-2 
-                                    rounded cursor-pointer">save</button> 
+                                ${Button({})} 
                             </form>
                            
                         </div>

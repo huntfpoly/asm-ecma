@@ -1,18 +1,19 @@
 import sidebarInfo from "../components/sidebarInfo";
 import OrderApi from "../api/OrderApi";
-import {clearUser} from "../localStorage";
+import {clearUser, getUserInfo} from "../localStorage";
 
 const Order = {
 
     async render() {
         try {
-            const {data: listOrder} = await OrderApi.getOrder();
+            const {_id} = getUserInfo();
+            const {data: listOrder} = await OrderApi.getOrderByUser(_id);
+
             const listOrderHTML = listOrder.map(item => {
                 return `
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap text-blue-500">#${item.id}</td>
                     <td class="px-6 py-4 whitespace-nowrap ">${new Date(item.created_at)}</td>
-                    
                      <td class="px-6 py-4 whitespace-nowrap text-green-500">
                        ${item.orderItems.length}
                     </td>
@@ -36,38 +37,38 @@ const Order = {
                 <div class="w-4/5 ml-5 ">
                     ${listOrder.length > 0 ?
                 `<table class=" border-collapse divide-y divide-gray-200 border-2 w-full">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Đơn hàng
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Ngày
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Số lượng item
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Tổng
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Tình trạng
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Các thao tác
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200 text-sm">
-                            ${listOrderHTML}
-                        </tbody>
-                    </table>`
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Đơn hàng
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Ngày
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Số lượng item
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Tổng
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Tình trạng
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Các thao tác
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200 text-sm">
+                        ${listOrderHTML}
+                    </tbody>
+                </table>`
                 : `<p>Chưa có đơn hàng nào</p>`}
                 </div>
 </div>
