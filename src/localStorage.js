@@ -1,11 +1,7 @@
-import jwt_decode from "jwt-decode";
-import UserApi from "./api/UserApi";
-
 export const getCartItems = () => {
-    const cartItems = localStorage.getItem('cartItems')
+    return localStorage.getItem('cartItems')
         ? JSON.parse(localStorage.getItem('cartItems'))
         : [];
-    return cartItems;
 };
 export const setCartItems = (cartItems) => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -45,18 +41,3 @@ export const setUserInfo = ({
 export const cleanCart = () => {
     localStorage.removeItem('cartItems');
 };
-
-// export const isToken = localStorage.getItem('token') ? localStorage.getItem('token') : false
-// export const isUser = localStorage.getItem('user') ? localStorage.getItem('user') : false
-// export const isLogin = (async () => {
-//
-//         try {
-//             const id = JSON.parse(isUser).id;
-//             await UserApi.getUser(id, isToken);
-//             return true;
-//         } catch (e) {
-//             return false
-//         }
-//
-//     return false
-// })();

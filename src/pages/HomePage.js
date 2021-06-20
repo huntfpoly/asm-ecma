@@ -15,7 +15,7 @@ const HomePage = {
     async render() {
         let {data: products} = await ProductApi.getAll()
         products.length = 4;
-       const resultHTML = result(products);
+        const resultHTML = result(products);
 
         return `
         <div class=" mx-auto">

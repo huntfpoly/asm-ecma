@@ -1,7 +1,6 @@
 import CategoriesApi from "../../api/CategoriesApi";
-import sidebarAdmin from "../../components/SidebarAdmin";
-import titleHeaderAdmin from "../../components/titleHeaderAdmin";
 import Button, {ButtonLink} from "../../components/Button";
+import LayoutAdmin from "../../components/LayoutAdmin";
 
 const result = (categories) => {
     return categories.map(cate => {
@@ -31,46 +30,39 @@ const AdminCategory = {
     async render() {
         const {data: categories} = await CategoriesApi.getAll()
         const resultHTML = result(categories);
-
-        return `
-            <div class="flex max-w-[1920px] px-6 my-5 text-white"> 
-               ${sidebarAdmin()}
-                <div class="w-full "> 
-                    ${titleHeaderAdmin('List Categories')}
-                    <div class="px-3 py-4 text-gray-700">
-                        <div class="flex justify-end">   
-                            ${ButtonLink(
-                                {
-                                    linkUrl:'/#/admin-add-category',
-                                    text: 'create',
-                                    bg:'bg-green-500',
-                                    hoverBg:'bg-green-700'
-                                }
-                            )}
-                        </div>
-                        <table class="w-full text-md bg-white shadow-md rounded mb-4">
-                            <thead> 
-                                <tr class="border-b"> 
-                                    <th class="text-left p-3 px-5">Id</th>
-                                    <th class="text-left p-3 px-5"  class=" flex items-center">
-                                        Name
-                                        <button data-sort="name">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4" />
-                                            </svg>  
-                                        </button>
-                                    </th>
-                                    <th class="text-left p-3 px-5">Slug</th>
-                                    <th class="text-left p-3 px-5">Image</th>
-                                </tr>
-                            </thead>
-                            <tbody id="cate-sort">
-                                    ${resultHTML}
-                            </tbody>
-                        </table>
-                     </div>
-                </div>
+        const html = `
+            <div class="flex justify-end">   
+                ${ButtonLink({
+                    linkUrl:'/#/admin-add-category',
+                    text: 'create',
+                    bg:'bg-green-500',
+                    hoverBg:'bg-green-700'
+                }
+                )}
             </div>
+            <table class="w-full text-md bg-white shadow-md rounded mb-4">
+                <thead> 
+                    <tr class="border-b"> 
+                        <th class="text-left p-3 px-5">Id</th>
+                        <th class="text-left p-3 px-5"  class=" flex items-center">
+                            Name
+                            <button data-sort="name">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4" />
+                                </svg>  
+                            </button>
+                        </th>
+                        <th class="text-left p-3 px-5">Slug</th>
+                        <th class="text-left p-3 px-5">Image</th>
+                    </tr>
+                </thead>
+                <tbody id="cate-sort">
+                        ${resultHTML}
+                </tbody>
+            </table>
+        `
+        return `
+            ${LayoutAdmin(html, 'List Categories')}
         `;
     },
     afterRender() {

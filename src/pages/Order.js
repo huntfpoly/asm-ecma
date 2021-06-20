@@ -1,6 +1,7 @@
 import sidebarInfo from "../components/sidebarInfo";
 import OrderApi from "../api/OrderApi";
 import {clearUser, getUserInfo} from "../localStorage";
+import {formatNumber} from "../utils";
 
 const Order = {
 
@@ -18,7 +19,7 @@ const Order = {
                        ${item.orderItems.length}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-green-500">
-                       ${item.totalPrice}
+                       ${formatNumber(item.totalPrice)}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap ">
                             <p>Đang xử lý</p>

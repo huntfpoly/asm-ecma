@@ -3,7 +3,6 @@ import "alpinejs";
 import CategoriesApi from "../api/CategoriesApi";
 import {pagination, parseRequestUrl, rerender} from "../utils";
 import ProductComponent from "../components/ProductComponent";
-import Pagination from "../components/Pagination";
 import Button from "../components/Button";
 
 const result = (products) => {
@@ -33,22 +32,7 @@ const ProductsPage = {
                     productCurrent = products.slice(index, index + 9)
                 }
                 document.querySelector('#products').innerHTML = result(productCurrent);
-                // Add to cart
-                let btnAddToCart = document.querySelectorAll('button[data-id]');
-                btnAddToCart.forEach(btn => {
-                    const id = btn.dataset.id;
-                    btn.addEventListener('click', () => {
-                        document.location.hash = `/cart/${id}`;
-                    });
-                })
             })
-        })
-        // Add to cart
-        btnAddToCart.forEach(btn => {
-            const id = btn.dataset.id;
-            btn.addEventListener('click', () => {
-                document.location.hash = `/cart/${id}`;
-            });
         })
 
         // Filter with price

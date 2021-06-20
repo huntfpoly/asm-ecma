@@ -1,47 +1,36 @@
-import titleHeaderAdmin from "../../components/titleHeaderAdmin";
-
 const faker = require('faker');
 
 import firebase from "../../firebase";
-import sidebarAdmin from "../../components/SidebarAdmin";
 import Validator from "../../../public/js/validator";
 import CategoriesApi from "../../api/CategoriesApi";
 import {hideLoading, showLoading} from "../../utils";
 import InputForm from "../../components/InputForm";
 import Button, {ButtonLink} from "../../components/Button";
+import LayoutAdmin from "../../components/LayoutAdmin";
 
 const AdminAddCategory = {
     async render() {
-        return `
-           
-        <div class="max-w-[1920px] px-6 my-5 flex text-white"> 
-           ${sidebarAdmin()}
-            <div class="w-full "> 
-                ${titleHeaderAdmin('Create Category')}
-                <div class="px-3 py-4 text-gray-700">
-                    <div class="flex justify-end">
-                        ${ButtonLink(
-                            {
-                                linkUrl:'/#/admin-categories',
-                                text:'back',
-                                bg: 'bg-gray-500',
-                                hoverBg: 'bg-gray-700'
-                            }
-                        )}
-                    </div>
-                <div> 
-                    <form action="" method="POST" class="form" id="formAdd">
-                       ${InputForm({label:'name', nameInput:'name', rules:'required|min:4'})}
-                       ${InputForm({label:'image', nameInput:'image', rules:'required',typeInput:'file'})}
-                       ${Button({})}
-
-                    </form>
-                    </div>
+        const html = `
+            <div class="flex justify-end">
+                ${ButtonLink({
+                    linkUrl:'/#/admin-categories',
+                    text:'back',
+                    bg: 'bg-gray-500',
+                    hoverBg: 'bg-gray-700'
+                    }
+                )}
                 </div>
-                
+                <div> 
+                <form action="" method="POST" class="form" id="formAdd">
+                   ${InputForm({label:'name', nameInput:'name', rules:'required|min:4'})}
+                   ${InputForm({label:'image', nameInput:'image', rules:'required',typeInput:'file'})}
+                   ${Button({})}
+                </form>
             </div>
-        </div>
-           
+        `
+        return `
+           ${LayoutAdmin(html, 'Add Category')}
+
         `;
     },
      afterRender() {

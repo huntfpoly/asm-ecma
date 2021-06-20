@@ -1,6 +1,6 @@
 import {cleanCart, getCartItems, getUserInfo} from "../localStorage";
 import Validator from "../../public/js/validator";
-import {hideLoading, showLoading} from "../utils";
+import {formatNumber, hideLoading, showLoading} from "../utils";
 import OrderApi from "../api/OrderApi";
 import InputForm from "../components/InputForm";
 
@@ -11,7 +11,7 @@ const convertCartToOrder = ({data, userId}) => {
         orderItems,
         totalPrice,
         data,
-        status: 1,
+        status: false   ,
         userId
     }
 }
@@ -27,11 +27,14 @@ const Checkout = {
             try {
                 const dataOrder = await OrderApi.createOrder(order);
                 cleanCart();
+                hideLoading();
+                alert('dat hang thanh cong');
                 document.location.hash = `/order/${dataOrder.data.id}`;
             } catch (e) {
                 alert(e)
+                hideLoading();
             }
-            hideLoading();
+
 
         };
     },
@@ -56,7 +59,7 @@ const Checkout = {
                             </div>
                         </div>
                     </div>
-                    <span class="text-gray-600">${item.price}</span>
+                    <span class="text-gray-600">${formatNumber(item.price)}</span>
                 </div>
             `;
         })
@@ -90,7 +93,7 @@ const Checkout = {
                             <div class="flex justify-between items-center"> 
                                 <h3 class="text-2xl font-bold uppercase">total price</h3>
                                <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                                   ${cartItems.reduce((accumulator, currentValue) => accumulator + currentValue.qty * currentValue.price, 0)}
+                                   ${formatNumber(cartItems.reduce((accumulator, currentValue) => accumulator + currentValue.qty * currentValue.price, 0))}
                                 </div>
                             </div>
                         </div>

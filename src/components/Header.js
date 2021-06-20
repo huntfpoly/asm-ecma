@@ -86,9 +86,9 @@ const Header = {
 
         btnPlus.forEach(btn => {
             const id = btn.dataset.id;
-            console.log(btnPlus)
+            // console.log(btnPlus)
             btn.addEventListener('click', () => {
-                console.log(id)
+                // console.log(id)
                 const item = getCartItems().find(x => x.product === id);
                 addToCart({...item, qty: (item.qty + 1)}, true);
                 // let cartItems = getCartItems();
@@ -109,7 +109,7 @@ const Header = {
             const id = btn.dataset.id;
 
             btn.addEventListener('click', () => {
-                console.log(btn)
+                // console.log(btn)
                 removeFromCart(id)
             })
         })
@@ -177,7 +177,7 @@ const Header = {
                         </div>
                         <ul class="w-full absolute z-10 top-full right-0 bg-gray-100 rounded" x-show="openUser"  @click.away="openUser = false"> 
                             <li > 
-                                ${isAdmin?`<a href="/#/admin-categories" class="inline-block w-full py-2 px-3  hover:text-blue-500 no-underline">DashBoard</a>`:''}
+                                ${isAdmin?`<a href="/#/admin-dashboard" class="inline-block w-full py-2 px-3  hover:text-blue-500 no-underline">DashBoard</a>`:''}
                             </li>
                                 <li > 
                                 <a href="/#/profile" class="inline-block w-full py-2 px-3  hover:text-blue-500 no-underline">Profile</a>

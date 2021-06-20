@@ -1,27 +1,30 @@
 import sidebarInfo from "../components/sidebarInfo";
 import OrderApi from "../api/OrderApi";
 import {clearUser} from "../localStorage";
-import {parseRequestUrl} from "../utils";
+import {formatNumber, parseRequestUrl} from "../utils";
 
 const OrderDetail = {
     async render() {
         const {id} = parseRequestUrl();
         try {
             const {data: order} = await OrderApi.getOrderDetail(id)
+            console.log(order)
             const listItemHTML = order.orderItems.map(item => {
                 return `
-                <div class="flex justify-between"> 
-                    <div class="flex items-center"> 
-                        <div class="overflow-hidden">
-                            <img class="w-20 rounded-md" src="${item.image}" alt=""> 
+                <div class="flex justify-between "> 
+                    <a href="/#/products/${item.id}" class="group"> 
+                        <div class="flex items-center "> 
+                            <div class="overflow-hidden">
+                                <img class="w-20 rounded-md" src="${item.image}" alt=""> 
+                            </div>
+                            <div class="px-4 group-hover:text-primary"> 
+                                <p>${item.name}</p>
+                                <p>qty: ${item.qty}</p>
+                            </div>
                         </div>
-                        <div class="px-4 "> 
-                            <p>${item.name}</p>
-                            <p>qty: ${item.qty}</p>
-                        </div>
-                    </div>
+                    </a>
                     <div> 
-                        <span>${item.price}</span>
+                        <span>${formatNumber(item.price)}</span>
                     </div>
                 </div>
             `;
@@ -42,7 +45,7 @@ const OrderDetail = {
                         <h4 class="text-xl font-bold mb-4">Order Summary</h4>
                         <div class="flex justify-between text-red-500 font-bold"> 
                             <p>Order Total</p>
-                            <p>${order.totalPrice}</p>
+                            <p>${formatNumber(order.totalPrice)}</p>
                         </div>
                     </div>
                    </div>

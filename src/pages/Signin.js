@@ -2,7 +2,6 @@ import Validator from "../../public/js/validator";
 import UserApi from "../api/UserApi";
 import jwt_decode from "jwt-decode"
 import {setUserInfo} from "../localStorage";
-// import {isLogin, isToken, isUser} from "../localStorage";
 
 
 const Signin = {

@@ -18,15 +18,22 @@
       rel="stylesheet"
       href="public/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"
     />
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script type="text/javascript">
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
   </head>
 
   <body>
+
     <div class="overlay" id="loading-overlay">Loading...</div>
     <header id="header"></header>
     <header id="breakCrumb"></header>
     <div id="root"></div>
     <footer id="footer"></footer>
-
     <script src="main.js"></script>
   </body>
 </html>

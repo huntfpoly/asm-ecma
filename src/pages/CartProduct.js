@@ -9,7 +9,7 @@ import Header from "../components/Header";
 export const addToCart = async (item, forceUpdate = false) => {
     let cartItems = getCartItems();
     // Kiểm tra tồn tại của product trong cartItem
-    const existItem = cartItems.find((x) => x.product === item.product);
+    const existItem = cartItems.find((x) => x.product === item.id);
 
     if (existItem) {
         if (forceUpdate) {
@@ -85,17 +85,18 @@ const CartProduct = {
     async render() {
         await rerender(Header, 'header')
         const request = parseRequestUrl();
-        if (request.id) {
-            const {data: product} = await ProductApi.get(request.id);
-            await addToCart({
-                product: product.id,
-                name: product.name,
-                image: product.image,
-                price: product.price,
-                description: product.description,
-                qty: 1,
-            })
-        }
+
+        // if (request.id) {
+        //     const {data: product} = await ProductApi.get(request.id);
+        //     await addToCart({
+        //         product: product.id,
+        //         name: product.name,
+        //         image: product.image,
+        //         price: product.price,
+        //         description: product.description,
+        //         qty: 1,
+        //     })
+        // }
         const cartItems = getCartItems();
         return `
 
@@ -107,69 +108,69 @@ const CartProduct = {
                    ${cartItems.length === 0
             ? `<div>Cart is empty</div>`
             : `<table class="w-full text-sm lg:text-base" cellspacing="0">
-                                <thead>
-                                <tr class="h-12 uppercase">
-                                    <th class="hidden md:table-cell"></th>
-                                    <th class="text-left">Product</th>
-                                    <th class="text-center pl-5 lg:pl-0">
-                                        <span class="lg:hidden" title="Quantity">Qtd</span>
-                                        <span class="hidden lg:inline">Quantity</span>
-                                    </th>
-                                    <th class="hidden text-right md:table-cell">Unit price</th>
-                                    <th class="text-right">Total price</th>
-                                </tr>
-                                </thead>
-                                <tbody>` + cartItems.map(item => `
-                                        <tr>
-                                            <td class="hidden pb-4 md:table-cell">
-                                                <a href="#">
-                                                    <img src="${item.image}"
-                                                         class="w-20 rounded" alt="Thumbnail">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="flex justify-between items-center"> 
-                                                    <a href="/#/products/${item.product}">
-                                                        <p>${item.name}</p>
-                                                    </a>
-                                                    <button class="text-gray-700 p-2 hover:text-red-500 focus:outline-none" delete data-id="${item.product}">
-                                                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                                          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                                
-                                            </td>
-                                             <td class="hidden text-right md:table-cell">
-                                                <div class="flex justify-center items-center">
-                                                      <button class="p-2 border" minus data-id="${item.product}" /> 
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-                                                        </svg>
-                                                        </button>
-                                                    <span class="mx-3 text-sm lg:text-base font-medium">
-                                                        ${item.qty}
-                                                    </span> 
-                                                    <button class="p-2 border" plus data-id="${item.product}"> 
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                            <td class="hidden text-right md:table-cell">
-                                                      <span class="text-sm lg:text-base font-medium">
-                                                        ${item.price}
-                                                      </span>
-                                            </td>
-                                            <td class="text-right">
-                                                      <span class="text-sm lg:text-base font-medium">
-                                                        ${item.qty * item.price}
-                                                      </span>
-                                            </td>
-                                        </tr>
-                                   
-                                `).join('')
+                <thead>
+                <tr class="h-12 uppercase">
+                    <th class="hidden md:table-cell"></th>
+                    <th class="text-left">Product</th>
+                    <th class="text-center pl-5 lg:pl-0">
+                        <span class="lg:hidden" title="Quantity">Qtd</span>
+                        <span class="hidden lg:inline">Quantity</span>
+                    </th>
+                    <th class="hidden text-right md:table-cell">Unit price</th>
+                    <th class="text-right">Total price</th>
+                </tr>
+                </thead>
+                <tbody>` + cartItems.map(item => `
+                    <tr>
+                        <td class="hidden pb-4 md:table-cell">
+                            <a href="#">
+                                <img src="${item.image}"
+                                     class="w-20 rounded" alt="Thumbnail">
+                            </a>
+                        </td>
+                        <td>
+                            <div class="flex justify-between items-center"> 
+                                <a href="/#/products/${item.product}">
+                                    <p>${item.name}</p>
+                                </a>
+                                <button class="text-gray-700 p-2 hover:text-red-500 focus:outline-none" delete data-id="${item.product}">
+                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                        </td>
+                         <td class="hidden text-right md:table-cell">
+                            <div class="flex justify-center items-center">
+                                  <button class="p-2 border" minus data-id="${item.product}" /> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                                    </svg>
+                                    </button>
+                                <span class="mx-3 text-sm lg:text-base font-medium">
+                                    ${item.qty}
+                                </span> 
+                                <button class="p-2 border" plus data-id="${item.product}"> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="hidden text-right md:table-cell">
+                                  <span class="text-sm lg:text-base font-medium">
+                                    ${new Intl.NumberFormat('vi').format(item.price)}
+                                  </span>
+                        </td>
+                        <td class="text-right">
+                                  <span class="text-sm lg:text-base font-medium">
+                                     ${new Intl.NumberFormat('vi').format(item.qty * item.price)}
+                                  </span>
+                        </td>
+                    </tr>
+                   
+                `).join('')
             + ` </tbody>
                         </table>`
         }
@@ -205,7 +206,9 @@ const CartProduct = {
                                         Total ( ${cartItems.reduce((accumulator, currentValue) => accumulator + currentValue.qty, 0)} item) 
                                     </div>
                                     <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                                       ${cartItems.reduce((accumulator, currentValue) => accumulator + currentValue.qty * currentValue.price, 0)}
+                                       
+                                       ${new Intl.NumberFormat('vi').format(cartItems.reduce((accumulator, currentValue) => accumulator + currentValue.qty * currentValue.price, 0))}
+
                                     </div>
                                 </div>
                                 <a href="/#/checkout">

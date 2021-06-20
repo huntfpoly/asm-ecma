@@ -14,6 +14,11 @@ const UserApi = {
         axiosClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         return axiosClient.get(url);
     },
+    getAll(token) {
+        const url = `/660/users`;
+        axiosClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        return axiosClient.get(url);
+    },
     update(data) {
         const url = `/660/users/${data._id}`;
         axiosClient.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;

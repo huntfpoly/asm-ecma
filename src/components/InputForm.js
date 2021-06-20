@@ -1,12 +1,11 @@
-const InputForm = (
-    {
-        label,
-        nameInput,
-        rules = 'required',
-        typeInput = 'text',
-        value= ''
-    }) => {
-    return `
+const InputForm = ({
+  label,
+  nameInput,
+  rules = "",
+  typeInput = "text",
+  value = "",
+}) => {
+  return `
         <div class="form-group flex flex-col mb-5">
             <label class="uppercase">${label}</label>
             <input 
@@ -21,5 +20,5 @@ const InputForm = (
             <span class="form-message"></span>
         </div>
     `;
-}
+};
 export default InputForm;

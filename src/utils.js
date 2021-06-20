@@ -1,5 +1,4 @@
 //  Lấy đường dẫn
-import {getCartItems} from "./localStorage";
 
 export const parseRequestUrl = () => {
     const url = window.location.hash.toLowerCase();
@@ -39,25 +38,6 @@ export const pagination = (products, limit) => {
         productCurrent: productCurrent,
     }
 }
-const showResult = (limit) => {
-    return `  
-        <p class="text-sm text-gray-700">
-            Showing
-            <span class="font-medium">1</span>
-            to
-            <span class="font-medium">${limit}</span>
-            of
-            <span class="font-medium">  ${data.pagination._totalRows}</span>
-            results
-        </p>
-    `
+export const formatNumber = (number) => {
+    return new Intl.NumberFormat('vi').format(number)
 }
-
-export const redirectUser = () => {
-
-    if (getCartItems().length !== 0) {
-        document.location.hash = '/checkout';
-    } else {
-        document.location.hash = '/';
-    }
-};
