@@ -1,8 +1,8 @@
-import 'alpinejs';
+import "alpinejs";
 import sidebarLinkAdmin from "./sidebarLinkAdmin";
 
 const sidebarAdmin = () => {
-    return `
+  return `
             <aside class="flex-shrink-0 hidden w-64 bg-white border-r dark:border-primary-darker dark:bg-darker md:block">
               <div class="flex flex-col h-full">
                 <!-- Sidebar links -->
@@ -55,7 +55,7 @@ const sidebarAdmin = () => {
                     <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
                       <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                       <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
-                        ${sidebarLinkAdmin('admin-dashboard', 'Dashboard')}
+                        ${sidebarLinkAdmin("admin-dashboard", "Dashboard")}
                     
                     </div>
                   </div>
@@ -105,7 +105,7 @@ const sidebarAdmin = () => {
                     <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
                       <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                       <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
-                        ${sidebarLinkAdmin('admin-categories', 'Categories')}
+                        ${sidebarLinkAdmin("admin-categories", "Categories")}
                     </div>
                   </div>
                   <!-- Products -->
@@ -154,8 +154,12 @@ const sidebarAdmin = () => {
                     <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
                       <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                       <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
-                        ${sidebarLinkAdmin('admin-products', 'All Products')}
-                        ${sidebarLinkAdmin('admin-add-product', 'Add New')}
+                        ${sidebarLinkAdmin("admin-products", "All Products")}
+                        ${sidebarLinkAdmin("admin-add-product", "Add New")}
+                        ${sidebarLinkAdmin(
+                          "admin-attributes",
+                          "Attributes"
+                        )}
                     </div>
                   </div>
                   <!-- Orders -->
@@ -204,7 +208,7 @@ const sidebarAdmin = () => {
                     <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
                       <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                       <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
-                        ${sidebarLinkAdmin('admin-order', 'Orders')}
+                        ${sidebarLinkAdmin("admin-order", "Orders")}
                     
                     </div>
                   </div> 
@@ -254,7 +258,7 @@ const sidebarAdmin = () => {
                     <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
                       <!-- active & hover classes 'text-gray-700 dark:text-light' -->
                       <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
-                        ${sidebarLinkAdmin('admin-categories', 'users')}
+                        ${sidebarLinkAdmin("admin-categories", "users")}
 
                     </div>
                   </div>
@@ -264,6 +268,5 @@ const sidebarAdmin = () => {
               </div>
         </aside>
         `;
-
-}
+};
 export default sidebarAdmin;

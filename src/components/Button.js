@@ -22,8 +22,8 @@ export const ButtonLink = (
         text = 'save',
         textSize = 'text-lg',
         textColor = 'text-white',
-        bg = 'bg-blue',
-        hoverBg = 'bg-blue'
+        bg = 'bg-primary',
+        hoverBg = 'bg-primary-lighter'
     }
 ) => {
     return `
